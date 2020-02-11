@@ -354,6 +354,8 @@ function package::prepare() {
     pushd $headersSourceDir/third_party/jsoncpp/source/include >/dev/null
     find . -name '*.h' -exec $CP --parents '{}' $headersDestDir ';'
     popd >/dev/null
+    # Need to copy the generated version.h as well - FIXME: this is not nice as we hardcode two paths here
+    $CP $headersSourceDir/third_party/jsoncpp/generated/version.h $headersDestDir/json
   fi
   popd >/dev/null
   # find and copy libraries
