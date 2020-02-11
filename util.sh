@@ -349,6 +349,12 @@ function package::prepare() {
     find . -name '*.h' -exec $CP --parents '{}' $headersDestDir ';'
     popd >/dev/null
   fi
+  # Revision 28574 introduced jsoncpp
+  if [[ $revision_number -ge 28574 ]]; then
+    pushd $headersSourceDir/third_party/jsoncpp/source >/dev/null
+    find . -name '*.h' -exec $CP --parents '{}' $headersDestDir ';'
+    popd >/dev/null
+  fi
   popd >/dev/null
   # find and copy libraries
   pushd src/out >/dev/null
