@@ -351,7 +351,7 @@ function package::prepare() {
   fi
   # Revision 28574 introduced jsoncpp
   if [[ $revision_number -ge 28574 ]]; then
-    pushd $headersSourceDir/third_party/jsoncpp/source >/dev/null
+    pushd $headersSourceDir/third_party/jsoncpp/source/include >/dev/null
     find . -name '*.h' -exec $CP --parents '{}' $headersDestDir ';'
     popd >/dev/null
   fi
